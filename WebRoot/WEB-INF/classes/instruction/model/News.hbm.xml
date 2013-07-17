@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class catalog="instruction" name="instruction.model.News" table="news"
+		dynamic-insert="true" dynamic-update="true">
+		<id name="id">
+			<column name="id" />
+			<generator class="assigned" />
+		</id>
+		<property generated="never" lazy="false" name="title"
+			type="java.lang.String">
+			<column length="50" name="title" />
+		</property>
+		<property generated="never" lazy="false" name="content"
+			type="java.lang.String">
+			<column length="655350" name="content" />
+		</property>
+		<property generated="never" lazy="false" name="description"
+			type="java.lang.String">
+			<column length="1000" name="description" />
+		</property>
+		<property lazy="false" name="uploadTime" type="java.lang.Integer">
+			<column name="uploadTime" />
+		</property>
+		<property lazy="false" name="updateTime" type="java.lang.Integer">
+			<column name="updateTime" />
+		</property>
+		<property lazy="false" name="viewCount" type="java.lang.Integer">
+			<column name="viewCount" />
+		</property>
+		<property lazy="false" name="status" type="java.lang.Short">
+			<column name="status" />
+		</property>
+		<property generated="never" lazy="false" name="coverUrl"
+			type="java.lang.String">
+			<column length="255" name="cover" />
+		</property>
+		<many-to-one class="instruction.model.User" column="uid"
+			name="user" />
+		<many-to-one class="instruction.model.UploadFile" column="ufid"
+			name="coverFile" cascade="save-update" not-found="ignore" />
+	</class>
+</hibernate-mapping>

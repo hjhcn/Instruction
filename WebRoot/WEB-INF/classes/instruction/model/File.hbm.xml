@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class catalog="instruction" name="instruction.model.File" table="file">
+		<id name="id">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		<property generated="never" lazy="false" name="fileUrl"
+			type="java.lang.String">
+			<column length="100" name="fileUrl" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="fileSize"
+			type="java.lang.Integer">
+			<column name="fileSize" />
+		</property>
+		<property generated="never" lazy="false" name="description"
+			type="java.lang.String">
+			<column length="100" name="description" />
+		</property>
+		<many-to-one class="instruction.model.Instruction" column="iid"
+			name="instruction" />
+	</class>
+</hibernate-mapping>

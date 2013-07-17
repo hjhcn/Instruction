@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="instruction.model.PhpcmsContent" table="phpcms_content"
+		catalog="instruction">
+		<id name="contentid" type="java.lang.Short">
+			<column name="contentid" />
+			<generator class="native" />
+		</id>
+		<property name="catid" type="java.lang.Short">
+			<column name="catid" not-null="true" />
+		</property>
+		<property name="typeid" type="java.lang.Short">
+			<column name="typeid" not-null="true" />
+		</property>
+		<property name="areaid" type="java.lang.Short">
+			<column name="areaid" not-null="true" />
+		</property>
+		<property name="title" type="java.lang.String">
+			<column name="title" length="160" not-null="true" />
+		</property>
+		<property name="style" type="java.lang.String">
+			<column name="style" length="5" not-null="true" />
+		</property>
+		<property name="thumb" type="java.lang.String">
+			<column name="thumb" length="100" not-null="true" />
+		</property>
+		<property name="keywords" type="java.lang.String">
+			<column name="keywords" length="40" not-null="true" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" not-null="true" />
+		</property>
+		<property name="posids" type="java.lang.Short">
+			<column name="posids" not-null="true" />
+		</property>
+		<property name="url" type="java.lang.String">
+			<column name="url" length="100" not-null="true" />
+		</property>
+		<property name="listorder" type="java.lang.Short">
+			<column name="listorder" not-null="true" />
+		</property>
+		<property name="status" type="java.lang.Short">
+			<column name="status" not-null="true" />
+		</property>
+		<property name="userid" type="java.lang.Short">
+			<column name="userid" not-null="true" />
+		</property>
+		<property name="username" type="java.lang.String">
+			<column name="username" length="20" not-null="true" />
+		</property>
+		<property name="inputtime" type="java.lang.Integer">
+			<column name="inputtime" not-null="true" />
+		</property>
+		<property name="updatetime" type="java.lang.Integer">
+			<column name="updatetime" not-null="true" />
+		</property>
+		<property name="searchid" type="java.lang.Short">
+			<column name="searchid" not-null="true" />
+		</property>
+		<property name="islink" type="java.lang.Short">
+			<column name="islink" not-null="true" />
+		</property>
+		<property name="prefix" type="java.lang.String">
+			<column name="prefix" length="20" not-null="true" />
+		</property>
+		<property name="shiftstatus" type="java.lang.Short">
+			<column name="shiftstatus" not-null="true" />
+		</property>
+		<one-to-one name="download" class="instruction.model.PhpcmsCDownload"></one-to-one>
+	</class>
+</hibernate-mapping>

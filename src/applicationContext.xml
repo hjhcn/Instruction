@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost/instruction?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="morningtel"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="true"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="3600000"></property>
+		<property name="minEvictableIdleTimeMillis" value="18000000"></property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					instruction.orm.MySQLServerDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>instruction/model/Admin.hbm.xml</value>
+				<value>instruction/model/User.hbm.xml</value>
+				<value>instruction/model/Instruction.hbm.xml</value>
+				<value>instruction/model/Message.hbm.xml</value>
+				<value>instruction/model/Brand.hbm.xml</value>
+				<value>instruction/model/File.hbm.xml</value>
+				<value>instruction/model/Category.hbm.xml</value>
+				<value>instruction/model/Comment.hbm.xml</value>
+				<value>instruction/model/PhpcmsContent.hbm.xml</value>
+				<value>instruction/model/PhpcmsCDownload.hbm.xml</value>
+				<value>instruction/model/CreditRule.hbm.xml</value>
+				<value>instruction/model/CreditLog.hbm.xml</value>
+				<value>instruction/model/Navigation.hbm.xml</value>
+				<value>instruction/model/BBSThread.hbm.xml</value>
+				<value>instruction/model/Notification.hbm.xml</value>
+				<value>instruction/model/News.hbm.xml</value>
+				<value>instruction/model/UploadFile.hbm.xml</value>
+				<value>instruction/model/DownloadLog.hbm.xml</value>
+				<value>instruction/model/TravelSign.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="adminDao" class="instruction.dao.impl.AdminDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="categoryDao" class="instruction.dao.impl.CategoryDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="phpcmsContentDao" class="instruction.dao.impl.PhpcmsDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="insDao" class="instruction.dao.impl.InsDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="brandDao" class="instruction.dao.impl.BrandDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="commentDao" class="instruction.dao.impl.CommentDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="userDao" class="instruction.dao.impl.UserDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="creditRuleDao" class="instruction.dao.impl.CreditRuleDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="creditLogDao" class="instruction.dao.impl.CreditLogDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="fileDao" class="instruction.dao.impl.FileDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="naviDao" class="instruction.dao.impl.NaviDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="bbsThreadDao" class="instruction.dao.impl.BBSThreadDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="newsDao" class="instruction.dao.impl.NewsDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="uploadFileDao" class="instruction.dao.impl.UploadFileDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="travelSignDao" class="instruction.dao.impl.TravelSignDaoImpl"
+		scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- service 开始 -->
+	<bean id="adminService" class="instruction.service.impl.AdminServiceImpl"
+		scope="singleton">
+		<property name="adminDao">
+			<ref bean="adminDao" />
+		</property>
+	</bean>
+	<bean id="brandService" class="instruction.service.impl.BrandServiceImpl"
+		scope="singleton">
+		<property name="brandDao">
+			<ref bean="brandDao" />
+		</property>
+	</bean>
+	<bean id="categoryService" class="instruction.service.impl.CategoryServiceImpl"
+		scope="singleton">
+		<property name="categoryDao">
+			<ref bean="categoryDao" />
+		</property>
+		<property name="brandService">
+			<ref bean="brandService" />
+		</property>
+	</bean>
+	<bean id="dataShiftService" class="instruction.service.impl.DataShiftServiceImpl"
+		scope="singleton">
+		<property name="phpcmsContentDao">
+			<ref bean="phpcmsContentDao" />
+		</property>
+		<property name="insDao">
+			<ref bean="insDao" />
+		</property>
+		<property name="categoryDao">
+			<ref bean="categoryDao" />
+		</property>
+		<property name="brandDao">
+			<ref bean="brandDao" />
+		</property>
+		<property name="userDao">
+			<ref bean="userDao" />
+		</property>
+		<property name="uploadFileDao">
+			<ref bean="uploadFileDao" />
+		</property>
+	</bean>
+	<bean id="insService" class="instruction.service.impl.InsServiceImpl"
+		scope="singleton">
+		<property name="insDao">
+			<ref bean="insDao" />
+		</property>
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+		<property name="brandService">
+			<ref bean="brandService" />
+		</property>
+		<property name="categoryService">
+			<ref bean="categoryService" />
+		</property>
+		<property name="creditService">
+			<ref bean="creditService" />
+		</property>
+		<property name="uploadFileService">
+			<ref bean="uploadFileService" />
+		</property>
+	</bean>
+	<bean id="commentService" class="instruction.service.impl.CommentServiceImpl"
+		scope="singleton">
+		<property name="commentDao">
+			<ref bean="commentDao" />
+		</property>
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+		<property name="insService">
+			<ref bean="insService" />
+		</property>
+		<property name="creditService">
+			<ref bean="creditService" />
+		</property>
+	</bean>
+	<bean id="userService" class="instruction.service.impl.UserServiceImpl"
+		scope="singleton">
+		<property name="userDao">
+			<ref bean="userDao" />
+		</property>
+		<property name="creditService">
+			<ref bean="creditService" />
+		</property>
+		<property name="insService">
+			<ref bean="insService" />
+		</property>
+		<property name="commentService">
+			<ref bean="commentService" />
+		</property>
+	</bean>
+	<bean id="creditService" class="instruction.service.impl.CreditServiceImpl"
+		scope="singleton">
+		<property name="creditRuleDao">
+			<ref bean="creditRuleDao" />
+		</property>
+		<property name="creditLogDao">
+			<ref bean="creditLogDao" />
+		</property>
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	<bean id="fileService" class="instruction.service.impl.FileServiceImpl"
+		scope="singleton">
+		<property name="fileDao">
+			<ref bean="fileDao" />
+		</property>
+	</bean>
+	<bean id="naviService" class="instruction.service.impl.NaviServiceImpl"
+		scope="singleton">
+		<property name="naviDao">
+			<ref bean="naviDao" />
+		</property>
+	</bean>
+	<bean id="bbsThreadService" class="instruction.service.impl.BBSThreadServiceImpl"
+		scope="singleton">
+		<property name="bbsThreadDao">
+			<ref bean="bbsThreadDao" />
+		</property>
+	</bean>
+	<bean id="newsService" class="instruction.service.impl.NewsServiceImpl"
+		scope="singleton">
+		<property name="newsDao">
+			<ref bean="newsDao" />
+		</property>
+		<property name="userDao">
+			<ref bean="userDao" />
+		</property>
+		<property name="uploadFileService">
+			<ref bean="uploadFileService" />
+		</property>
+	</bean>
+	<bean id="uploadFileService" class="instruction.service.impl.UploadFileServiceImpl"
+		scope="singleton">
+		<property name="uploadFileDao">
+			<ref bean="uploadFileDao" />
+		</property>
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	<bean id="travelSignService" class="instruction.service.impl.TravelSignServiceImpl"
+		scope="singleton">
+		<property name="travelSignDao">
+			<ref bean="travelSignDao" />
+		</property>
+	</bean>
+	<!-- service 结束 -->
+
+
+	<bean id="categoryAction" class="instruction.action.CategoryAction"
+		scope="prototype">
+		<property name="categoryService">
+			<ref bean="categoryService" />
+		</property>
+	</bean>
+
+	<bean id="indexAction" class="instruction.action.IndexAction"
+		scope="prototype">
+		<property name="insService">
+			<ref bean="insService" />
+		</property>
+		<property name="categoryService">
+			<ref bean="categoryService" />
+		</property>
+		<property name="naviService">
+			<ref bean="naviService" />
+		</property>
+		<property name="bbsThreadService">
+			<ref bean="bbsThreadService" />
+		</property>
+		<property name="newsService">
+			<ref bean="newsService" />
+		</property>
+	</bean>
+	<bean id="insAction" class="instruction.action.InsAction" scope="prototype">
+		<property name="insService">
+			<ref bean="insService" />
+		</property>
+		<property name="categoryService">
+			<ref bean="categoryService" />
+		</property>
+		<property name="bbsThreadService">
+			<ref bean="bbsThreadService" />
+		</property>
+		<property name="creditService">
+			<ref bean="creditService" />
+		</property>
+	</bean>
+	<bean id="commentAction" class="instruction.action.CommentAction"
+		scope="prototype">
+		<property name="commentService">
+			<ref bean="commentService" />
+		</property>
+	</bean>
+	<bean id="userAction" class="instruction.action.UserAction" scope="prototype">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	<bean id="brandAction" class="instruction.action.BrandAction"
+		scope="prototype">
+		<property name="brandService">
+			<ref bean="brandService" />
+		</property>
+	</bean>
+	<bean id="notificationAction" class="instruction.action.NotificationAction"
+		scope="prototype">
+		<property name="creditService" ref="creditService">
+		</property>
+		<property name="bbsThreadService" ref="bbsThreadService">
+		</property>
+	</bean>
+	<bean id="newsAction" class="instruction.action.NewsAction" scope="prototype">
+		<property name="newsService" ref="newsService">
+		</property>
+		<property name="categoryService">
+			<ref bean="categoryService" />
+		</property>
+		<property name="bbsThreadService">
+			<ref bean="bbsThreadService" />
+		</property>
+	</bean>
+	<bean id="travelSignAction" class="instruction.action.TravelSignAction"
+		scope="prototype">
+		<property name="travelSignService" ref="travelSignService">
+		</property>
+	</bean>
+	<bean id="uploadAction" class="instruction.action.UploadAction"
+		scope="prototype">
+		<property name="uploadFileService" ref="uploadFileService">
+		</property>
+	</bean>
+
+	<!-- admin action 开始 -->
+	<bean id="adminAdminAction" class="instruction.action.admin.AdminAdminAction"
+		scope="prototype">
+		<property name="adminService">
+			<ref bean="adminService" />
+		</property>
+	</bean>
+	<bean id="insAdminAction" class="instruction.action.admin.InsAdminAction"
+		scope="prototype">
+		<property name="insService">
+			<ref bean="insService" />
+		</property>
+		<property name="categoryService">
+			<ref bean="categoryService" />
+		</property>
+	</bean>
+	<bean id="brandAdminAction" class="instruction.action.admin.BrandAdminAction"
+		scope="prototype">
+		<property name="brandService">
+			<ref bean="brandService" />
+		</property>
+	</bean>
+	<bean id="categoryAdminAction" class="instruction.action.admin.CategoryAdminAction"
+		scope="prototype">
+		<property name="categoryService">
+			<ref bean="categoryService" />
+		</property>
+		<property name="brandService">
+			<ref bean="brandService" />
+		</property>
+	</bean>
+	<bean id="dataShiftAdminAction" class="instruction.action.admin.DataShiftAdminAction"
+		scope="prototype">
+		<property name="dataShiftService" ref="dataShiftService">
+		</property>
+		<property name="fileService" ref="fileService">
+		</property>
+	</bean>
+	<bean id="creditAdminAction" class="instruction.action.admin.CreditAdminAction"
+		scope="prototype">
+		<property name="creditService" ref="creditService">
+		</property>
+		<property name="userService" ref="userService">
+		</property>
+	</bean>
+	<bean id="commentAdminAction" class="instruction.action.admin.CommentAdminAction"
+		scope="prototype">
+		<property name="commentService" ref="commentService">
+		</property>
+	</bean>
+	<bean id="bbsThreadAdminAction" class="instruction.action.admin.BBSThreadAdminAction"
+		scope="prototype">
+		<property name="bbsThreadService" ref="bbsThreadService">
+		</property>
+	</bean>
+	<bean id="newsAdminAction" class="instruction.action.admin.NewsAdminAction"
+		scope="prototype">
+		<property name="newsService" ref="newsService">
+		</property>
+	</bean>
+	<bean id="uploadAdminAction" class="instruction.action.admin.UploadAdminAction"
+		scope="prototype">
+		<property name="uploadFileService" ref="uploadFileService">
+		</property>
+	</bean>
+	<bean id="userAdminAction" class="instruction.action.admin.UserAdminAction"
+		scope="prototype">
+		<property name="userService" ref="userService">
+		</property>
+	</bean>
+	<!-- admin action 结束 -->
+
+	<bean id="loginInterceptor" class="instruction.interceptor.LoginInterceptor">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="userSessionInject" class="instruction.interceptor.UserSessionInject">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="userTokenInterceptor" class="instruction.interceptor.UserTokenInterceptor">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="adminInterceptor" class="instruction.interceptor.AdminInterceptor">
+	</bean>
+
+</beans>

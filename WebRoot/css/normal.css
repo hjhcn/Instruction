@@ -1,0 +1,160 @@
+/* public */
+*{margin:0px;padding:0px;}
+body{padding:0px;margin:0px;font-family: "宋体", A rial, Helvetica, sans-serif;font-size:12px;}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,form,fieldset,input,textarea,p,blockquote,th,td{padding:0px;margin:0px;font-family: "宋体", A rial, Helvetica, sans-serif;font-size:12px;}
+ul li{ list-style:none;}
+img{ border:0px;}
+a{color:#000000;text-decoration:none;}
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration:underline}
+a:active {text-decoration: none;}
+/*clear float*/
+.clearfix:after {font-size:0;line-height:0;content: "\020";display: block;height:0;clear: both;}
+.clearfix {zoom:1;}
+
+.hide{ display:none;}
+.gray{ color:#999;}
+
+/* index header */
+.header{ width:1000px; margin:0 auto;}
+
+
+/*  导航  */
+.logo_nav{ width:auto; height:100px; border:1px solid #ebebeb; border-top:none;color:#000; }
+.logo_nav_1{ border:1px solid #fff; background-color:#f9f9f9; height:98px;}
+.logo_nav_1 .logoarea{ float:left; width:171px; padding:18px 0 0 15px;}
+.logo_nav_1 .m_nav{ float:left; width:810px; padding-top:10px;}
+.logo_nav_1 .logoarea .weather{ padding-top:8px;}
+.logo_nav_1 .logoarea .weather img{ margin:0 16px; float:left; }
+.logo_nav_1 .logoarea .weather span{ float:left;}
+.m_nav_top{ width:802px; overflow:hidden; height:27px; line-height:27px; background-color:#fff; border-top:1px solid #e3e3e3; border-left:1px solid #e3e3e3; border-right:1px solid #fff; border-bottom:1px solid #fff; padding-left:0px;}
+.m_nav_top a{ color:#000000; padding:0;}
+.m_nav_top a:hover{ color:#b20002; }
+.m_nav_top a b{ color:#b20002; font-weight:bold;}
+.m_nav_top a:hover b{ text-decoration:none;}
+.m_nav_top a.set_01,.m_nav_top a.set_02,.m_nav_top a.set_03,.m_nav_top a.set_04,.m_nav_top a.set_05,.m_nav_top a.set_06,.m_nav_top a.set_07{ padding-left:20px; margin-left:5px; display:inline-block; height:27px; color:#b20002;}
+.m_nav_top a.set_01{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -184px 3px;  }
+.m_nav_top a.set_02{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -184px -23px;  }
+.m_nav_top a.set_03{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -184px -48px;  }
+.m_nav_top a.set_04{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -184px -72px;  }
+.m_nav_top a.set_05{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -184px -96px;  }
+.m_nav_top a.set_06{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -184px -119px;  }
+.m_nav_top a.set_07{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -184px -142px;  }
+.m_nav_top a.set_08{ padding-left:20px; margin-left:3px; display:inline-block; height:27px; background:url(../../../image/app/home/sj.jpg) no-repeat 2px 4px;}
+.m_nav_main{ padding-top:3px;}
+.m_nav_main dl.nv_0{ float:left; height:53px; border:1px solid #f9f9f9; background:#f9f9f9; }
+.m_nav_main dl.nv_0 dt{ float:left; width:44px;  }
+.m_nav_main dl.nv_0 dd{ float:left; height:53px;  background:url(http://www.139life.com/themes/default/image/app/home/line_01.png) no-repeat 0 0; padding:5px 5px 0;line-height:20px;}
+.m_nav_main dl.nv_1 dd{ width:181px;}
+.m_nav_main dl.nv_2 dd{ width:144px;}
+.m_nav_main dl.nv_3 dd{ width:113px;}
+.m_nav_main dl.nv_4 dd{ width:90px;}
+.m_nav_main dl.nv_1_cursor {
+    background-color: #EDEDED;
+    border-color: #A9A9A9 #FFFFFF #FFFFFF #A9A9A9;
+    border-style: solid;
+    border-width: 1px;
+}
+.m_nav_main dl.nv_0 dt a {
+    color: #000000;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 21px;
+    padding-top: 35px;
+    text-align: center;
+    width: 44px;
+}
+.m_nav_main dl.nv_1_cursor dt a {
+    color: #B20002;
+}
+.m_nav_main dl.nv_1 dt a {
+    background: url("http://www.139life.com/themes/default/image/app/home/sprit.png") no-repeat scroll -158px -170px transparent;
+}
+.m_nav_main dl.nv_1_cursor dt a {
+    background: url("http://www.139life.com/themes/default/image/app/home/sprit.png") no-repeat scroll -158px -170px transparent;
+}
+.m_nav_main dl.nv_1_cursor dt a.blue {
+    color: #077EC8;
+}
+
+.m_nav_main dl.nv_1_cursor{  border-top:1px solid #a9a9a9; border-left:1px solid #a9a9a9; border-right:1px solid #fff; border-bottom:1px solid #fff; background-color:#ededed;}
+.m_nav_main dl.nv_0 dt span{ display:block; width:44px; height:21px; padding-top:35px; font-size:12px; text-align:center; color:#000000; font-weight:bold; }
+.m_nav_main dl.nv_1_cursor dt span{  color:#b20002;}
+.m_nav_main dl.nv_1 dt span{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -158px -170px; }
+.m_nav_main dl.nv_1_cursor dt span{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -158px -170px; }
+.m_nav_main dl.nv_1_cursor dt span.blue{ color:#077ec8;}
+.m_nav_main dl.nv_2 dt span{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -158px -224px; }
+.m_nav_main dl.nv_1_cursor2 dt span{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -158px -224px; }
+
+.m_nav_main dl.nv_3 dt span{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -158px -283px; }
+.m_nav_main dl.nv_1_cursor3 dt span{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -158px -283px; }
+
+.m_nav_main dl.nv_4 dt span{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -159px -341px; }
+.m_nav_main dl.nv_1_cursor4 dt span{ background:url(http://www.139life.com/themes/default/image/app/home/sprit.png) no-repeat -159px -341px; }
+
+.m_nav_main dl.nv_0 dd a{ color:#000000; padding:0 2px;}
+.m_nav_main dl.nv_0 dd a:hover{ color:#b20002;}
+.m_nav_main dl.noe_cursor{  float:left; padding:5px 0 0 7px; background:url(http://www.139life.com/themes/default/image/app/home/line_01.png) no-repeat 0 0; height:48px; }
+.m_nav_main dl.noe_cursor a{ color:#000000;}
+.m_nav_main dl.noe_cursor a:hover{ color:#b20002;}
+.m_nav_main dl.noe_cursor dd .red{ color:#b20002;}
+
+/* CSS Document */
+.topnavlist ul.newnav_spul{ margin-left:228px;}
+.top_xia{ width:996px; height:82px; overflow:hidden;}
+.newnav_list{ float:left; width:105px;; height:70px; background:url(images/head/sznav_ling.gif) right center no-repeat; padding:0px 20px; margin-top:7px; display:inline;}
+.newnav_spwidth{ width:185px;}
+.newnav_list p{ color:#666666; height:23px; line-height:23px;}
+.newnav_list p img{ line-height:0px; float:left; margin-top:2px;}
+.newnav_list p a,.newnav_list p a:hover{ float:left; color:#666666; margin-right:5px;}
+.newnav_list p span{ float:left; font-weight:bold; margin-right:8px;}
+.newnav_lastone{ background:none; width:85px;}
+
+.login-search{width:1000px;clear:both; margin-top:10px; height:100px;}
+.login-search .login input{ border:solid 1px #cacaca;padding:5px;font-size:14px;height:14px;line-height:14px;margin:5px; width:150px;}
+.login-search .login{ width:280px; float:left;}
+.login-search .login .login-contain{ border:solid 1px #cacaca; height:80px; width:265px; padding:10px 5px;}
+.login-search .login .login-contain .input{ width:190px; float:left; color:#000;}
+.login-search .login .login-contain .input .resinfo{ font-size:12px; color:#b20002; padding-left:10px;}
+.login-search .login .login-contain .button{ width:75px; float:left;}
+.login-search .login .login-contain .button .login-btn{ background:url(images/sprite.png); width:75px; height:32px; margin-top:5px; cursor:pointer;}
+.login-search .login .login-contain .button .forget{margin-top:15px; font-size:14px;}
+.login-search .login .login-contain .userinfo{ padding:5px 10px; font-size:13px;}
+.login-search .login .login-contain .userinfo .avatar{ width:80px; float:left;}
+.login-search .login .login-contain .userinfo .avatar .icon{ width:60px; padding:2px; border:1px solid #cacaca;}
+.login-search .login .login-contain .userinfo .detail{ width:150px; overflow:hidden;}
+.login-search .login .login-contain .userinfo .detail p{ padding:3px;}
+.login-search .login .login-contain .userinfo .detail .user-action{ background:url(images/sprite.png) 0px -255px; width:59px; height:17px; text-align:center; padding-top:3px; cursor:pointer;float:left;}
+.login-search .login .login-contain .userinfo .detail  .i-upload{ float:left; padding:3px 3px;}
+.login-search a:link,.top a:hover,.top a:visited{ font-size:14px;}
+.login-search .search{width:710px; float:left; margin-left:10px; display:inline;}
+.login-search .search .input{margin-top:25px; height:30px; padding-left:50px;}
+.login-search .search .input input{width:488px;padding:5px; font-size:15px; float:left; height:16px; border-left:solid 1px #cacaca;border-top:solid 1px #cacaca;border-bottom:solid 1px #cacaca;border-right:none; line-height:16px;}
+.login-search .search .input .btn{ float:left; background:url(images/sprite.png) 0px -32px; width:95px; height:30px; cursor:pointer;}
+.login-search .search .hot{ color:#999; font-size:13px; padding-top:5px; clear:both;padding-left:50px;}
+.login-search .search .line{ border-bottom:solid 1px #cacaca; width:100%; height:25px;}
+
+.userinfo a:link,.userinfo a:visited,.userinfo a:hover{ color:#F99E44; font-size:12px;}
+
+.module a:link,module a:visited,module a:hover{ color:#0068c0;}
+
+
+.main{ width:1000px; margin:0 auto; clear:both; margin-top:10px;}
+
+.mainlabel{font-size:15px; color:#b20002; font-weight:bold;}
+
+
+.footer{margin:0 auto; width:950px; line-height:24px; text-align:center; color:#555; clear:both; padding-top:20px;}
+.footer a{color:#ab420f;}
+.footer a:hover{color:#ab420f; text-decoration:underline;}
+
+
+
+
+
+
+
+
+

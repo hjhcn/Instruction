@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="instruction.model.Navigation" table="navigation" catalog="instruction">
+		<id name="id">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		<property name="name" />
+		<property name="link" />
+		<property name="parentId" type="java.lang.Integer">
+			<column name="parent" not-null="true" />
+		</property>
+		<many-to-one class="instruction.model.Category" column="cid"
+			name="category" />
+	</class>
+</hibernate-mapping>

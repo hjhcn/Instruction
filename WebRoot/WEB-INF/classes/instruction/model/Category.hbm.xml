@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="instruction.model.Category" table="category"
+		catalog="instruction">
+		<id name="id">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="name" length="50" not-null="true" />
+		</property>
+		<property name="count" type="java.lang.Integer" generated="insert">
+			<column name="count" not-null="true" />
+		</property>
+		<property name="parentId" type="java.lang.Integer">
+			<column name="parent" not-null="true" />
+		</property>
+		<set table="category_brand" name="brands">
+			<key column="cid" />
+			<many-to-many column="bid"
+				class="instruction.model.Brand" not-found="ignore"/>
+		</set>
+	</class>
+</hibernate-mapping>
