@@ -41,7 +41,8 @@
 						<s:else>
 							<li><a id="cat<s:property value="#cat.id"/>"
 								<s:if test="#cat.id==cid">class="sel-cat"</s:if>
-								href="/list/<s:property value="#cat.id"/>.html"><s:property value="#cat.name" /> </a></li>
+								href="/list/<s:property value="#cat.id"/>.html"><s:property value="#cat.name" /> </a>
+							</li>
 						</s:else>
 						</s:iterator>
 					</ul>
@@ -55,7 +56,8 @@
 			<ul>
 				<s:iterator value="threads" status="st" id="thread">
 					<li>. <a target="_blank" href="<s:property value="#thread.link"/>" class="ins"><s:property
-								escape="false" value="#thread.title" /> </a></li>
+								escape="false" value="#thread.title" /> </a>
+					</li>
 				</s:iterator>
 			</ul>
 		</div>
@@ -86,6 +88,7 @@
 
 .news-detail p,.news-detail div {
 	margin-bottom: 20px;
+	font-size: 16px;
 }
 </style>
 			</s:if>

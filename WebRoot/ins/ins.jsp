@@ -285,6 +285,6 @@
 		</div>
 	</div>
 </div>
-<s:include value="common/foot.jsp" />
+<s:include value="/common/foot.jsp" />
 </body>
 </html>
