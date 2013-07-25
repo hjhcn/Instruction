@@ -5,7 +5,6 @@ import instruction.model.User;
 import instruction.model.UserSession;
 import instruction.rules.FeedbackRule;
 import instruction.rules.UserSessionRule;
-import instruction.rules.UserTokenRule;
 import instruction.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,10 +27,6 @@ public class UserTokenInterceptor extends AbstractInterceptor {
 		User user = userService.getUserByToken(token);
 		Object action = invocation.getAction();
 		if (null != user) {
-			if (action instanceof UserTokenRule) {
-				UserTokenRule userTokenRule = (UserTokenRule) action;
-				userTokenRule.setIsFromApp(true);
-			}
 			if (action instanceof UserSessionRule) {
 				UserSession userSession = new UserSession(user);
 				UserSessionRule userSessionRule = (UserSessionRule) action;

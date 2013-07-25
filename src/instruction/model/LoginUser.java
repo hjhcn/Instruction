@@ -1,5 +1,7 @@
 package instruction.model;
 
+import org.apache.struts2.json.annotations.JSON;
+
 /**
  * 该类用于同步登陆时返回用户信息
  */
@@ -21,6 +23,7 @@ public class LoginUser {
 		this.user = user;
 	}
 
+	@JSON(serialize = false)
 	public String getSync() {
 		return sync;
 	}

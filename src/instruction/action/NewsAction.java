@@ -35,13 +35,10 @@ public class NewsAction extends SessionBaseAction {
 	}
 
 	public String news() {
-		threads = bbsThreadService.findTop(10);
-		cates = categoryService.getTree(0);
-		news = newsService.get(id, STATUS.PASS);
-		return SUCCESS;
-	}
-
-	public String newsApp() {
+		if (!isFromApp) {
+			threads = bbsThreadService.findTop(10);
+			cates = categoryService.getTree(0);
+		}
 		news = newsService.get(id, STATUS.PASS);
 		return SUCCESS;
 	}

@@ -7,7 +7,6 @@ import instruction.model.BBSThread;
 import instruction.model.Category;
 import instruction.model.CreditRule;
 import instruction.model.Daren;
-import instruction.model.File;
 import instruction.model.InsUpload;
 import instruction.model.Instruction;
 import instruction.model.UploadFile;
@@ -58,14 +57,10 @@ public class InsAction extends SessionBaseAction {
 	public String ins() {
 		ins = insService.get(id, SystemConstants.STATUS.PASS);
 		if (ins != null) {
-			for (File file : ins.getFiles()) {
-				if (null == file.getDescription() || "".equals(file.getDescription())) {
-					file.setDescription(ins.getTitle());
-				}
-			}
 			cates = categoryService.findRelated(ins.getCategory());
 		}
-		threads = bbsThreadService.findTop(10);
+		if (!isFromApp)
+			threads = bbsThreadService.findTop(10);
 		return SUCCESS;
 	}
 

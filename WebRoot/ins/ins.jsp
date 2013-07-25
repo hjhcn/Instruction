@@ -11,7 +11,7 @@
 <link href="/css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" />
 <script type="text/javascript" src="/js/flexpaper_flash.js"></script>
 <script type="text/javascript" src="/js/jquery-ui-1.10.2.custom.min.js"></script>
-<script src="/js/comment.js?070101"></script>
+<script src="/js/comment.js?07024"></script>
 
 <script>
 	jQuery(function($) {

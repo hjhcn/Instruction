@@ -11,7 +11,7 @@ jQuery(function($) {
 						$(".comment-list").html("<ul></ul>");
 						jQuery
 								.each(
-										data.pageView.rows,
+										data.comments.rows,
 										function(index, comment) {
 											var starHTML = "";
 											for ( var i = 0; i < comment.grade; i++) {

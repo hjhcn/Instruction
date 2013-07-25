@@ -463,7 +463,7 @@
 	<bean id="userTokenInterceptor" class="instruction.interceptor.UserTokenInterceptor">
 		<property name="userService" ref="userService"></property>
 	</bean>
-	<bean id="adminInterceptor" class="instruction.interceptor.AdminInterceptor">
-	</bean>
+	<bean id="userApiInterceptor" class="instruction.interceptor.UserApiInterceptor" />
+	<bean id="adminInterceptor" class="instruction.interceptor.AdminInterceptor" />
 
 </beans>

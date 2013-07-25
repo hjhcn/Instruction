@@ -16,7 +16,6 @@ import instruction.model.UploadFile;
 import instruction.model.UploadFileConvertObject;
 import instruction.rules.DocConvertFinishRule;
 import instruction.service.DataShiftService;
-import instruction.util.FileUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -30,83 +29,84 @@ public class DataShiftServiceImpl implements DataShiftService, DocConvertFinishR
 	private CategoryDao categoryDao;
 	private BrandDao brandDao;
 	private UserDao userDao;
+	@SuppressWarnings("unused")
 	private UploadFileDao uploadFileDao;
 
 	public void dataTransfer() {
-		List<Instruction> inses = insDao.findAll();
-		for (Instruction ins : inses) {
-			UploadFile insFile = null;
-			for (File file : ins.getFiles()) {
-				insFile = new UploadFile();
-				insFile.setFileUrl(file.getFileUrl());
-				insFile.setFileSize(file.getFileSize() == null ? 0 : file.getFileSize());
-				insFile.setDescription(file.getDescription());
-				if (null == insFile.getDescription() || insFile.getDescription().isEmpty()) {
-					insFile.setDescription(ins.getTitle());
-				}
-				insFile.setUser(ins.getUser());
-				insFile.setFileType(FileUtils.getExt(file.getFileUrl()));
-				insFile.setStatus((short) 2);
-				insFile.setDateline(ins.getUploadTime());
-				insFile.setServer(ins.getServer());
-			}
-			if (null != ins.getInsFile() && null != insFile)
-				ins.setInsFile(insFile);
-
-			UploadFile iconFile = null;
-			if (null == ins.getIconUrl() || ins.getIconUrl().isEmpty()
-					|| ins.getIconUrl().indexOf("default") > 0) {
-				ins.setIconUrl(SystemConstants.UPLOAD_FOLDER_SERVER + "/default.png");
-				iconFile = uploadFileDao.get(1);
-			} else {
-				iconFile = new UploadFile();
-				iconFile.setFileUrl(ins.getIconUrl());
-
-				java.io.File iconfile1 = new java.io.File(SystemConstants.UPLOAD_FOLDER + "/"
-						+ ins.getIconUrl());
-				java.io.File iconfile2 = new java.io.File(SystemConstants.OLD_UPLOAD_FOLDER + "/"
-						+ ins.getIconUrl());
-				if (iconfile1.exists()) {
-					iconFile.setFileSize((int) (iconfile1.length() / 1024));
-					iconFile.setStatus((short) 1);
-				} else if (iconfile2.exists()) {
-					iconFile.setFileSize((int) (iconfile2.length() / 1024));
-					iconFile.setStatus((short) 1);
-				} else {
-					iconFile.setFileSize(0);
-					iconFile.setStatus((short) -2);
-				}
-				iconFile.setDescription("封面" + ins.getTitle());
-				iconFile.setDescription(ins.getTitle());
-				iconFile.setUser(ins.getUser());
-				iconFile.setFileType(FileUtils.getExt(ins.getIconUrl()));
-				iconFile.setDateline(ins.getUploadTime());
-				iconFile.setServer(ins.getServer());
-
-				// 修改ins中封面冗余字段
-				ins.setIconUrl("/" + ins.getServer() + "/" + ins.getIconUrl());
-			}
-			ins.setIconFile(iconFile);
-
-			if (ins.getMobileSWFFile() == null && ins.getMobileSWFUrl() != null) {
-				List<UploadFile> uploadFiles = uploadFileDao.findByProperty("fileUrl",
-						ins.getMobileSWFUrl());
-				if (uploadFiles.size() == 1) {
-					ins.setMobileSWFFile(uploadFiles.get(0));
-				}
-			}
-			if (ins.getMobile3DSWFFile() == null && ins.getMobile3DSWFUrl() != null) {
-				List<UploadFile> uploadFiles = uploadFileDao.findByProperty("fileUrl",
-						ins.getMobile3DSWFUrl());
-				if (uploadFiles.size() == 1) {
-					ins.setMobile3DSWFFile(uploadFiles.get(0));
-				}
-			}
-			try {
-				insDao.saveOrUpdate(ins);
-			} catch (Exception e) {
-			}
-		}
+		// List<Instruction> inses = insDao.findAll();
+		// for (Instruction ins : inses) {
+		// UploadFile insFile = null;
+		// for (File file : ins.getFiles()) {
+		// insFile = new UploadFile();
+		// insFile.setFileUrl(file.getFileUrl());
+		// insFile.setFileSize(file.getFileSize() == null ? 0 : file.getFileSize());
+		// insFile.setDescription(file.getDescription());
+		// if (null == insFile.getDescription() || insFile.getDescription().isEmpty()) {
+		// insFile.setDescription(ins.getTitle());
+		// }
+		// insFile.setUser(ins.getUser());
+		// insFile.setFileType(FileUtils.getExt(file.getFileUrl()));
+		// insFile.setStatus((short) 2);
+		// insFile.setDateline(ins.getUploadTime());
+		// insFile.setServer(ins.getServer());
+		// }
+		// if (null != ins.getInsFile() && null != insFile)
+		// ins.setInsFile(insFile);
+		//
+		// UploadFile iconFile = null;
+		// if (null == ins.getIconUrl() || ins.getIconUrl().isEmpty()
+		// || ins.getIconUrl().indexOf("default") > 0) {
+		// ins.setIconUrl(SystemConstants.UPLOAD_FOLDER_SERVER + "/default.png");
+		// iconFile = uploadFileDao.get(1);
+		// } else {
+		// iconFile = new UploadFile();
+		// iconFile.setFileUrl(ins.getIconUrl());
+		//
+		// java.io.File iconfile1 = new java.io.File(SystemConstants.UPLOAD_FOLDER + "/"
+		// + ins.getIconUrl());
+		// java.io.File iconfile2 = new java.io.File(SystemConstants.OLD_UPLOAD_FOLDER + "/"
+		// + ins.getIconUrl());
+		// if (iconfile1.exists()) {
+		// iconFile.setFileSize((int) (iconfile1.length() / 1024));
+		// iconFile.setStatus((short) 1);
+		// } else if (iconfile2.exists()) {
+		// iconFile.setFileSize((int) (iconfile2.length() / 1024));
+		// iconFile.setStatus((short) 1);
+		// } else {
+		// iconFile.setFileSize(0);
+		// iconFile.setStatus((short) -2);
+		// }
+		// iconFile.setDescription("封面" + ins.getTitle());
+		// iconFile.setDescription(ins.getTitle());
+		// iconFile.setUser(ins.getUser());
+		// iconFile.setFileType(FileUtils.getExt(ins.getIconUrl()));
+		// iconFile.setDateline(ins.getUploadTime());
+		// iconFile.setServer(ins.getServer());
+		//
+		// // 修改ins中封面冗余字段
+		// ins.setIconUrl("/" + ins.getServer() + "/" + ins.getIconUrl());
+		// }
+		// ins.setIconFile(iconFile);
+		//
+		// if (ins.getMobileSWFFile() == null && ins.getMobileSWFUrl() != null) {
+		// List<UploadFile> uploadFiles = uploadFileDao.findByProperty("fileUrl",
+		// ins.getMobileSWFUrl());
+		// if (uploadFiles.size() == 1) {
+		// ins.setMobileSWFFile(uploadFiles.get(0));
+		// }
+		// }
+		// if (ins.getMobile3DSWFFile() == null && ins.getMobile3DSWFUrl() != null) {
+		// List<UploadFile> uploadFiles = uploadFileDao.findByProperty("fileUrl",
+		// ins.getMobile3DSWFUrl());
+		// if (uploadFiles.size() == 1) {
+		// ins.setMobile3DSWFFile(uploadFiles.get(0));
+		// }
+		// }
+		// try {
+		// insDao.saveOrUpdate(ins);
+		// } catch (Exception e) {
+		// }
+		// }
 	}
 
 	public void docConverter() {

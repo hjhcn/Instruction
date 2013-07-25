@@ -68,11 +68,6 @@
 			type="java.lang.Integer">
 			<column name="order" />
 		</property>
-		<set name="files" sort="unsorted" table="file" cascade="all"
-			inverse="true">
-			<key column="iid" />
-			<one-to-many class="instruction.model.File" />
-		</set>
 		<property generated="insert" lazy="false" name="g3Url"
 			type="java.lang.String">
 			<column length="255" name="g3Url" />
@@ -94,9 +89,9 @@
 		<many-to-one class="instruction.model.User" column="uid"
 			name="user" />
 		<many-to-one class="instruction.model.Brand" column="bid"
-			name="brand" outer-join="true" />
+			name="brand"  not-found="ignore"/>
 		<many-to-one class="instruction.model.Category" column="cid"
-			name="category" />
+			name="category"/>
 		<many-to-one class="instruction.model.UploadFile" column="iconufid"
 			name="iconFile" cascade="save-update" />
 		<many-to-one class="instruction.model.UploadFile" column="insufid"

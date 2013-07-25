@@ -94,9 +94,13 @@ public class UserServiceImpl implements UserService {
 	public synchronized LoginUser login(String loginname, String password, String ip,
 			boolean isFromApp) {
 		LoginUser loginUser = new LoginUser();
+		loginUser.setFeedback(SystemConstants.FEEDBACK.SUCCESS);// 首先置为成功
 		UCClient uc = new UCClient();
 		try {
 			String result = uc.uc_user_login(loginname, password, ip);
+			if (isFromApp) {
+				System.out.println(result);
+			}
 			LinkedList<String> rs = XMLHelper.uc_unserialize(result);
 			if (rs.size() > 0) {
 				int uid = Integer.parseInt(rs.get(0));
@@ -141,6 +145,9 @@ public class UserServiceImpl implements UserService {
 						break;
 					case -3:
 					case -4:
+					case -5:
+					case -11:
+					default:
 						loginUser.setFeedback(SystemConstants.FEEDBACK.USER_API_ERROR);
 						break;
 					}

@@ -464,7 +464,7 @@ public class UCClient extends PHPFunctions {
 	 *            $username 用户名/uid
 	 * @param string
 	 *            $password 密码
-	 * @param int $isuid 是否为uid
+	 * @param int $isuid 是否为uid，改为手机号码登录
 	 * @param int $checkques 是否使用检查安全问答
 	 * @param int $questionid 安全提问
 	 * @param string
@@ -472,15 +472,37 @@ public class UCClient extends PHPFunctions {
 	 * @return array (uid/status, username, password, email) 数组第一项 1 : 成功 -1 : 用户不存在,或者被删除 -2 : 密码错
 	 */
 	public String uc_user_login(String $username, String $password, String $ip) {
-		return uc_user_login($username, $password, 0, 0, $ip);
+		return uc_user_login($username, $password, 3, 0, $ip);// 改为手机号码登录
 	}
 
-	public String uc_user_login(String $username, String $password, int $isuid, int $checkques,
+	/**
+	 * 改成私有，禁止非手机号码登录
+	 * 
+	 * @param $username
+	 * @param $password
+	 * @param $isuid
+	 * @param $checkques
+	 * @param $ip
+	 * @return
+	 */
+	private String uc_user_login(String $username, String $password, int $isuid, int $checkques,
 			String $ip) {
 		return uc_user_login($username, $password, $isuid, $checkques, "", "", $ip);
 	}
 
-	public String uc_user_login(String $username, String $password, int $isuid, int $checkques,
+	/**
+	 * 改成私有，禁止非手机号码登录
+	 * 
+	 * @param $username
+	 * @param $password
+	 * @param $isuid
+	 * @param $checkques
+	 * @param $questionid
+	 * @param $answer
+	 * @param $ip
+	 * @return
+	 */
+	private String uc_user_login(String $username, String $password, int $isuid, int $checkques,
 			String $questionid, String $answer, String $ip) {
 		Map<String, Object> args = new HashMap<String, Object>();
 		args.put("username", $username);

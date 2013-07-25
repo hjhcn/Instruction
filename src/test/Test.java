@@ -19,8 +19,8 @@ public class Test {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		// testLogin();
-		UCClient uc = new UCClient();
+		testLogin();
+		// UCClient uc = new UCClient();
 		//
 		// String code =
 		// "cb1aBRO/374kxLUkHkUC79Ed/ZpdUG1bt5/DmJQZgpIi0VsQ2r70pB82qjPgB+wGQl9lXLkaZmKUMC20eWVgiJ07tSUWkuYGomvAtnbVBbV2iBJEIGTwpo5Vcss7xrNQoRzjnCbFTCfEmva93/a0hZGUZja9fTr7ngSMZvUU0tK1rfNTaQV7cxI+lZ8roF3hhe7/78CL58JssH0cW2EqfDstaAZqIQ";
@@ -45,7 +45,7 @@ public class Test {
 		// LinkedList<String> rs = XMLHelper.uc_unserialize(result);
 		// System.out.println(rs);
 
-		uc.uc_get_user("1302", 1);
+		// uc.uc_get_user("1302", 1);
 		// System.out.println(result);
 		// LinkedList<String> rs = XMLHelper.uc_unserialize(result);
 		// System.out.println("" + byte2hex(rs.get(1).getBytes()));

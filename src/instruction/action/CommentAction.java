@@ -8,7 +8,7 @@ import instruction.util.page.PageView;
 public class CommentAction extends SessionBaseAction {
 
 	private static final long serialVersionUID = -6099566024995318676L;
-	private PageView<Comment> pageView;
+	private PageView<Comment> comments;
 	private int iid;
 	private CommentService commentService;
 	private short grade = 1;
@@ -21,7 +21,7 @@ public class CommentAction extends SessionBaseAction {
 	}
 
 	public String list() {
-		pageView = commentService.findScrollData(uid, iid, page, rows, order, sort);
+		comments = commentService.findScrollData(uid, iid, page, rows, order, sort);
 		return SUCCESS;
 	}
 
@@ -37,8 +37,8 @@ public class CommentAction extends SessionBaseAction {
 		this.content = content;
 	}
 
-	public PageView<Comment> getPageView() {
-		return pageView;
+	public PageView<Comment> getComments() {
+		return comments;
 	}
 
 	public void setIid(int iid) {

@@ -88,7 +88,7 @@
 		</action>
 	</package>
 
-	<package name="admin" extends="struts-default" namespace="/admin">
+	<package name="admin" extends="struts-default" namespace="/amgr">
 		<interceptors>
 			<interceptor name="adminAuth" class="adminInterceptor" />
 			<interceptor-stack name="adminAuthStack">
@@ -132,7 +132,7 @@
 		</action>
 	</package>
 
-	<package name="adminJson" extends="json-default" namespace="/admin/json">
+	<package name="adminJson" extends="json-default" namespace="/amgr/json">
 		<interceptors>
 			<interceptor name="adminAuth" class="adminInterceptor" />
 			<interceptor-stack name="adminAuthStack">
@@ -174,11 +174,13 @@
 	<package name="apiForClient" extends="json-default" namespace="/api/json">
 		<interceptors>
 			<interceptor name="userTokenAuth" class="userTokenInterceptor" />
-			<interceptor-stack name="userTokenAuthStack">
-				<interceptor-ref name="userTokenAuth" />
+			<interceptor name="userApiIntercept" class="userApiInterceptor" />
+			<interceptor-stack name="userApiInterceptStack">
+				<interceptor-ref name="userApiIntercept" />
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
+		<default-interceptor-ref name="userApiInterceptStack" />
 		<global-results>
 			<result name="error" type="json">
 				<param name="ignoreHierarchy">false</param>
@@ -188,6 +190,7 @@
 			</result>
 		</global-results>
 		<action name="*_*Auth_*" class="{1}Action" method="{2}Auth">
+			<interceptor-ref name="userApiInterceptStack" />
 			<interceptor-ref name="userTokenAuth" />
 			<result name="success" type="json">
 				<param name="ignoreHierarchy">false</param>
@@ -203,6 +206,10 @@
 				<param name="includeProperties">
 					feedback,
 					{3}.*
+				</param>
+				<param name="excludeProperties">
+					newses.rows\[\d+\]\.content,
+					inses.rows\[\d+\]\.description
 				</param>
 			</result>
 		</action>

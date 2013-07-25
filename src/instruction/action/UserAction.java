@@ -45,7 +45,7 @@ public class UserAction extends SessionBaseAction {
 
 	public String login() {
 		loginUser = userService.login(loginname, password, Ip.getIpAddr(request), isFromApp);
-		if (loginUser.getFeedback() > 0) {
+		if (loginUser.getFeedback() > 0 && !isFromApp) {
 			Cookie cookie = UserCookieUtils.setUserCookie(loginUser.getUser());
 			response.addCookie(cookie);
 			session.put(SystemConstants.USER_SESSION, new UserSession(loginUser.getUser()));

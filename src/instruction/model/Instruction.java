@@ -2,8 +2,6 @@ package instruction.model;
 
 import instruction.util.Time;
 
-import java.util.Set;
-
 import org.apache.struts2.json.annotations.JSON;
 
 public class Instruction implements java.io.Serializable {
@@ -40,7 +38,6 @@ public class Instruction implements java.io.Serializable {
 	private UploadFile insFile;
 	private UploadFile mobileSWFFile;
 	private UploadFile mobile3DSWFFile;
-	private Set<File> files;
 
 	public int getId() {
 		return id;
@@ -283,15 +280,6 @@ public class Instruction implements java.io.Serializable {
 
 	public void setMobile3DSWFFile(UploadFile mobile3dswfFile) {
 		mobile3DSWFFile = mobile3dswfFile;
-	}
-
-	@JSON(serialize = false)
-	public Set<File> getFiles() {
-		return files;
-	}
-
-	public void setFiles(Set<File> files) {
-		this.files = files;
 	}
 
 }
